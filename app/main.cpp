@@ -25,30 +25,31 @@ int main()
 	// std::cout << count << '\n';
 
 
+    //==============================================================================
 
 
-	try
-    {
-        Reader reader;
-        reader.read("H:\\Programare\\C++\\Pictures\\data\\path.txt");
+	// try
+    // {
+    //     Reader reader;
+    //     reader.read("H:\\Programare\\C++\\Pictures\\data\\path.txt");
 
-        Files sorted;
-        Files merged;
+    //     Files sorted;
+    //     Files merged;
 
-        for (const auto& [offset, directory] : reader)
-        {
-            Files temp;
-            sorted = std::move(sort_files(directory, std::chrono::hours(offset)));
-            std::merge(merged.begin(), merged.end(), sorted.begin(), sorted.end(), std::back_inserter(temp));
-            merged = std::move(temp);
-        }
+    //     for (const auto& [offset, directory] : reader)
+    //     {
+    //         Files temp;
+    //         sorted = std::move(sort_files(directory, std::chrono::hours(offset)));
+    //         std::merge(merged.begin(), merged.end(), sorted.begin(), sorted.end(), std::back_inserter(temp));
+    //         merged = std::move(temp);
+    //     }
 
-        copy_and_rename(merged, reader.dest());
+    //     copy_and_rename(merged, reader.dest());
 
-    } catch (const std::exception& e)
-    {
-        std::cerr << "Error: " << e.what() << '\n';
-    }
+    // } catch (const std::exception& e)
+    // {
+    //     std::cerr << "Error: " << e.what() << '\n';
+    // }
 
 	return 0;
 }
