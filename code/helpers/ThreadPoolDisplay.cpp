@@ -9,7 +9,7 @@ void ThreadPoolDisplay::add_job(std::function<void(void)>&& func)
 void ThreadPoolDisplay::start_and_display()
 {
     {
-        ThreadPool pool(4);
+        ThreadPool<4> pool;
 
         // transfer jobs
         _totalIterations = _temporaryJobs.size();
@@ -26,7 +26,7 @@ void ThreadPoolDisplay::start_and_display()
             _draw_progress();
         }
 
-        // pool is destroyed, but waits for the threads to finish and join
+        // ThreadPool obj is destroyed, but waits for the threads to finish and join
     }
 
     // display 100% when done
@@ -42,9 +42,12 @@ void ThreadPoolDisplay::_draw_progress()
     std::cout << "[";
     for (int i = 0; i < _BAR_WIDTH; ++i)
     {
-        if (i < _position) std::cout << "=";
-        else if (i == _position) std::cout << ">";
-        else std::cout << " ";
+        if (i < _position)
+            std::cout << "=";
+        else if (i == _position)
+            std::cout << ">";
+        else
+            std::cout << " ";
     }
     std::cout << "] " << int(_progress * 100.0f) << " %\r";
     std::cout.flush();

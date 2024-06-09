@@ -72,7 +72,3 @@ x64/
 *.exe
 *.out
 *.app
-
-# Git Command Helpers
-*.sh
-*.bat
