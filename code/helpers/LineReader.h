@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include "Common.h"
 
 class LineReader
 {
@@ -15,17 +16,14 @@ private:
     container _lines;
 
 public:
+
     LineReader() = default;
 
     iterator begin();
-
     iterator end();
-
     const_iterator begin() const;
-
     const_iterator end() const;
 
     void read(const std::string& filename);
-
     void reset();
 };

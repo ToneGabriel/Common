@@ -2,5 +2,4 @@
 target_include_directories(${LIBRARY_NAME} PUBLIC ${CURRENT_DIRECTORY})
 target_sources(${LIBRARY_NAME} PUBLIC
     LineReader.cpp
-    ThreadPoolDisplay.cpp
 )

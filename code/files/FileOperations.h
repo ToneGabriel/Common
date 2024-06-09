@@ -1,4 +1,5 @@
 #pragma once
+#include "Common.h"
 #include <filesystem>
 #include <vector>
 #include <string>
@@ -18,9 +19,8 @@ std::vector<fs::directory_entry> merge_dirs(const std::vector<std::string>& dire
                                             const std::string& destination,
                                             FileCompareFlag compareFlag);
 
-template<class Duration>
-void change_last_write_time_in_dir( const std::string& directoryName,
-                                    const std::chrono::time_point<std::chrono::system_clock, Duration> tp);
+// void change_last_write_time_in_dir( const std::string& directoryName,
+//                                     const std::chrono::system_clock::time_point& newTime);
 
 
 
@@ -30,12 +30,14 @@ void change_last_write_time_in_dir( const std::string& directoryName,
 // template impl =======================================================================
 
 
-template<class Duration>
-void change_last_write_time_in_dir( const std::string& directoryName,
-                                    const std::chrono::system_clock::time_point& tp)
-{
-    auto iter = fs::directory_iterator(directoryName);
+// template<class Duration>
+// void change_last_write_time_in_dir( const std::string& directoryName,
+//                                     const std::chrono::system_clock::time_point& newTime)
+// {
+//     CUSTOM_ASSERT(fs::exists(directoryName), "Directory does not exist!");
 
-    // for (const auto& entry : iter)
-    //     fs::last_write_time(entry, tp);
-}
+//     auto iter = fs::directory_iterator(directoryName);
+
+//     for (const auto& entry : iter)
+//         fs::last_write_time(entry, fs::file_time_type(newTime));
+// }
